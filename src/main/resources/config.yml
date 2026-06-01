@@ -1,13 +1,46 @@
-# LayoutFixer
-# Исправляет команды, набранные в русской раскладке (/рщьу -> /home).
+# LayoutFixer v1.1
+# 1) Команды в русской раскладке:  /рщьу  -> /home
+# 2) С точкой вместо слеша:        .home / .рщьу -> /home
+# 3) T9: исправление опечаток:       /hpme -> /home
 
 # Глобальный выключатель
 enabled: true
 
-# Исправлять только если исправленная команда реально существует
-# (рекомендуется true, чтобы не трогать случайный ввод)
-only-known-commands: true
+# Ловить команды, начатые с точки (или других префиксов ниже)
+accept-dot-prefix: true
+command-prefixes:
+  - "."
 
-# Сообщать игроку, что команда была исправлена
+# T9 / исправление опечаток
+fuzzy-correct: true
+# Рассматривать только команды, доступные игроку по правам
+require-permission: true
+# Насколько лучший вариант должен опережать второй (защита от неоднозначности)
+ambiguity-margin: 1
+
+# Подсказки (кликабельные), когда автоисправление небезопасно
+suggest: true
+max-suggestions: 3
+suggest-threshold: 4
+suggest-message: "&7Может быть вы имели в виду: "
+
+# Опасные команды: никогда не исправлять на них автоматически (только подсказка)
+dangerous-commands:
+  - stop
+  - restart
+  - op
+  - deop
+  - ban
+  - ban-ip
+  - pardon
+  - pardon-ip
+  - kick
+  - whitelist
+  - reload
+  - kill
+  - save-all
+  - lp
+
+# Сообщать игроку об исправлении
 notify: true
 notify-message: "&7[&aLayoutFixer&7] Исправлено на: &f/%command%"

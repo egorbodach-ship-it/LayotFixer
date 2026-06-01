@@ -1,9 +1,9 @@
 name: LayoutFixer
-version: 1.0.0
+version: 1.1.0
 main: top.lordgamer.layoutfixer.LayoutFixerPlugin
 api-version: "1.19"
 author: LordGamer
-description: Auto-fixes commands typed in the wrong keyboard layout (RU -> EN).
+description: Fixes mistyped commands - wrong keyboard layout, dot-prefix and typos (T9).
 commands:
   layoutfixer:
     description: LayoutFixer admin command
